@@ -1,5 +1,6 @@
 body
   background: #fff
+  font-family: sans-serif
 
 .form-group
   margin-bottom: 15px
@@ -13,10 +14,16 @@ body
   .tetris__settings-controls
     margin-bottom: 15px
 
+    & > div
+      margin-bottom: 10px
+
   label
     margin-right: 10px
 
 .tetris__table
+  position: relative
+
+.tetris__list
   //width: 252px
   height: 800px
   display: grid
@@ -33,3 +40,94 @@ body
 
     &.active
       background: yellow
+
+.tetris__overlay
+  background: rgba(0,0,0,.5)
+  height: 100%
+  width: 100%
+  position: absolute
+  left: 0
+  top: 0
+  display: none
+
+  &.active
+    display: block
+
+.tetris__pause
+  color: #fff
+  font-size: 30px
+  height: 100%
+  width: 100%
+  position: absolute
+  left: 0
+  top: 0
+  display: none
+  justify-content: center
+  align-items: center
+
+  &.active
+    display: flex
+
+.tetris__score
+  display: flex
+  color: red
+  font-size: 20px
+  .tetris__score-caption
+    margin-right: 5px
+
+.tetris__over
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .4)
+  color: #fff
+  font-weight: bold
+  position: absolute
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  opacity: 0
+  pointer-events: none
+
+  &.active
+    opacity: 1
+    transition: .2s
+    pointer-events: all
+
+  .tetris__over-caption
+    font-size: 30px
+    margin-bottom: 10px
+
+  .tetris__over-score
+    font-size: 22px
+    margin-bottom: 20px
+
+  .tetris__over-restart
+    font-size: 32px
+    opacity: 0
+    animation: 3s linear scaling infinite
+    cursor: pointer
+
+    &.active
+      opacity: 1
+      transition: .2s
+      &:hover
+        color: #fcff8d
+
+@-webkit-keyframes scaling
+  from
+    transform: scale(.5)
+  50%
+    transform: scale(1)
+  to
+    transform: scale(.5)
+
+@keyframes scaling
+  from
+    transform: scale(.5)
+  50%
+    transform: scale(1)
+  to
+    transform: scale(.5)

@@ -1,5 +1,6 @@
 body {
   background: #fff;
+  font-family: sans-serif;
 }
 
 .form-group {
@@ -16,26 +17,137 @@ body {
 .tetris__settings .tetris__settings-controls {
   margin-bottom: 15px;
 }
+.tetris__settings .tetris__settings-controls > div {
+  margin-bottom: 10px;
+}
 .tetris__settings label {
   margin-right: 10px;
 }
 
 .tetris__table {
+  position: relative;
+}
+
+.tetris__list {
   height: 800px;
   display: grid;
   grid-template-columns: repeat(8, 40px);
   grid-template-autrows: repeat(16, 40px);
   grid-gap: 1px;
 }
-.tetris__table .tetris__cell {
+.tetris__list .tetris__cell {
   width: 100%;
   height: 100%;
   background: #ccc;
   margin: 1px;
   color: red;
 }
-.tetris__table .tetris__cell.active {
+.tetris__list .tetris__cell.active {
   background: yellow;
+}
+
+.tetris__overlay {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+}
+.tetris__overlay.active {
+  display: block;
+}
+
+.tetris__pause {
+  color: #fff;
+  font-size: 30px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.tetris__pause.active {
+  display: flex;
+}
+
+.tetris__score {
+  display: flex;
+  color: red;
+  font-size: 20px;
+}
+.tetris__score .tetris__score-caption {
+  margin-right: 5px;
+}
+
+.tetris__over {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+.tetris__over.active {
+  opacity: 1;
+  transition: 0.2s;
+  pointer-events: all;
+}
+.tetris__over .tetris__over-caption {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.tetris__over .tetris__over-score {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.tetris__over .tetris__over-restart {
+  font-size: 32px;
+  opacity: 0;
+  animation: 3s linear scaling infinite;
+  cursor: pointer;
+}
+.tetris__over .tetris__over-restart.active {
+  opacity: 1;
+  transition: 0.2s;
+}
+.tetris__over .tetris__over-restart.active:hover {
+  color: #fcff8d;
+}
+
+@-webkit-keyframes scaling {
+  from {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.5);
+  }
+}
+@keyframes scaling {
+  from {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.5);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
